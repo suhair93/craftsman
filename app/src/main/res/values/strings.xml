@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">Art</string>
+    <string name="company_name">Company Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="city">City</string>
+
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+
+    <string name="home">Home</string>
+    <string name="tasks">Tasks</string>
+    <string name="Arrival_and_departure">Arrival and departure</string>
+    <string name="Registry">Registry</string>
+    <string name="Customer">Customer</string>
+
+    <string name="sign_in">Signing in. please wait ....</string>
+    <string name="created">Account is being created. please wait ....</string>
+
+
+    <string name="edit">Edit</string>
+    <string name="Craftsmen">Craftsmen</string>
+
+    <string name="close">Close</string>
+    <string name="description">description</string>
+    <string name="sign_in_to_get_started">Sign in to get started</string>
+
+
+    <string name="sign_up">SIGN UP</string>
+    <string name="get_new_account">Get New Account ...  </string>
+    <string name="sign_up_to_get_started">Sign up to get started</string>
+    <string name="enter_name">Enter UserName</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_phone">Enter Phone</string>
+    <string name="enter_address">Enter address</string>
+
+
+    <string name="Not_valid">Not valid</string>
+    <string name="welcome">Welcome</string>
+
+
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="category">Category</string>
+
+    <string name="my_profile">My profile</string>
+    <string name="photo_restaurant">Photo Restaurant</string>
+
+
+    <string name="logout">Logout</string>
+
+    <string name="upload_image">Upload Image</string>
+    <string name="discount">Discount</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="no_data">No Data</string>
+    <string name="add_work">Add work</string>
+    <string name="details">details</string>
+
+    <string name="note">Note</string>
+    <string name="my_orders">My Orders</string>
+    <string name="search">Search</string>
+    <string name="the_nearest_restaurants">The nearest restaurants</string>
+    <string name="remember_me">Remember me</string>
+    <string name="delete">Delete</string>
+    <string name="cart">cart</string>
+    <string name="price">price</string>
+    <string name="title">title</string>
+    <string name="work">My Work</string>
+    <string name="new_work">New Work</string>
+    <string name="request">Customers Requests </string>
+    <string name="most_active_craftsman">Most Active Craftsman</string>
+    <string name="history_work">My list of works </string>
+
+    <!-- Strings related to barcode scanner -->
+    <string name="Draw">Drawing</string>
+    <string name="Carpentry">Carpentry</string>
+    <string name="ok">OK</string>
+    <string-array name="Categories">
+        <item>Select category ...</item>
+        <item>Carpentry</item>
+        <item>Draw</item>
+    </string-array>
+</resources>

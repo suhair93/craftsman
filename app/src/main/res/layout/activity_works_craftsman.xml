@@ -1,0 +1,92 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/toolbar"
+            android:layout_height="@dimen/_45sdp"
+            android:background="@color/colorPrimaryDark">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:text="@string/work"
+                    android:gravity="center"
+                    android:textStyle="italic|bold"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16sdp" />
+
+                <ImageButton
+                    android:id="@+id/back"
+                    android:layout_width="16dp"
+                    android:layout_height="22dp"
+
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_9sdp"
+                    android:background="@drawable/back" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_30sdp"
+
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/add"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/buttonshape1"
+                android:text="@string/new_work"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="italic|bold"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/history_work"
+            android:textSize="@dimen/_20sdp"
+            android:textStyle="bold"
+            android:layout_margin="@dimen/_10sdp"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_height="wrap_content" />
+
+
+
+
+    </LinearLayout>
+</ScrollView>

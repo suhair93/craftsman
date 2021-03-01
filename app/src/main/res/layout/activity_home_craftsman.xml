@@ -1,0 +1,123 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/toolbar"
+            android:layout_height="@dimen/_45sdp"
+            android:background="@color/colorPrimaryDark">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:text="@string/home"
+                    android:gravity="center"
+                    android:textStyle="italic|bold"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16sdp" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            android:textStyle="italic|bold"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:textColor="@color/gray_dark"
+            android:textSize="@dimen/_25sdp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_120sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_30sdp"
+
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/buttonshape_blue"
+                android:text="@string/my_profile"
+                android:textStyle="italic|bold"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/_15sdp"
+
+                android:textColor="@color/white"/>
+            <Button
+                android:id="@+id/work"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/buttonshape_blue"
+                android:text="@string/work"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="italic|bold"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="@dimen/_120sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_30sdp"
+
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/request"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/buttonshape_blue"
+                android:text="@string/request"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="italic|bold"
+                android:textColor="@color/white"/>
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/buttonshape_blue"
+                android:text="@string/logout"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_weight="0.5"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="italic|bold"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>
