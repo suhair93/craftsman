@@ -64,18 +64,19 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
 
-            android:textColor="@color/black"
+            android:textColor="@android:color/holo_green_dark"
             android:textSize="@dimen/_14sdp" />
 
         <Button
             android:id="@+id/add"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_30sdp"
-            android:background="@color/colorAccent"
+            android:background="@drawable/buttonshape_green"
             android:text="add to cart"
             android:layout_gravity="right"
             android:textColor="@color/white"
-            android:textSize="@dimen/_15sdp"
+            android:padding="@dimen/_3sdp"
+            android:textSize="@dimen/_14sdp"
             android:layout_marginEnd="@dimen/_15sdp"
             android:layout_marginStart="@dimen/_15sdp"
             android:layout_marginBottom="@dimen/_10sdp"

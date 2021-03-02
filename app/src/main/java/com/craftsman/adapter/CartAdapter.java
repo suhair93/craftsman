@@ -49,7 +49,7 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         final Work item = list.get(position);
 
         holder1.title.setText(item.getTitle());
-        holder1.descrption.setText(item.getDescription());
+       // holder1.descrption.setText(item.getDescription());
         holder1.price.setText(Integer.toString(item.getPrice()));
 
         try {

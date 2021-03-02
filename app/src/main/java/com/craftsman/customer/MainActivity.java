@@ -131,28 +131,24 @@ public class MainActivity   extends AppCompatActivity implements NavigationView.
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.home:
-           //    HomeActivityNew.this.finish();
-                break;
-            case R.id.change_Profile:
-                //  Intent intent = new Intent(CustomerMainActivity.this, Change_data_customer.class);
-                // startActivity(intent);
+//            case R.id.home:
+//           //    HomeActivityNew.this.finish();
+//                break;
+//            case R.id.change_Profile:
+//                //  Intent intent = new Intent(CustomerMainActivity.this, Change_data_customer.class);
+//                // startActivity(intent);
+//                break;
+//
+//
+//            case R.id.search:
+//                //  Intent intentresturant = new Intent(CustomerMainActivity.this, ResturantActivity.class);
+//                //   startActivity(intentresturant);
+//                break;
+            case R.id.cart:
+                  Intent i = new Intent(MainActivity.this, cart_customer.class);
+                   startActivity(i);
                 break;
 
-
-            case R.id.search:
-                //  Intent intentresturant = new Intent(CustomerMainActivity.this, ResturantActivity.class);
-                //   startActivity(intentresturant);
-                break;
-            case R.id.card:
-                  Intent intentresturant = new Intent(MainActivity.this, cart_customer.class);
-                startActivity(intentresturant);
-                break;
-
-            //   case R.id.the_nearest_restaurants:
-            //     Intent intentnearest = new Intent(CustomerMainActivity.this, NearstResturantActivity.class);
-            //   startActivity(intentnearest);
-            // break;
 
 
             case R.id.logout:

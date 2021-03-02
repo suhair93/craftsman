@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.craftsman.R;
+import com.craftsman.adapter.CartAdapter;
 import com.craftsman.adapter.WorkCraftsmanAdapter;
 import com.craftsman.model.Work;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +29,7 @@ public class cart_customer extends AppCompatActivity {
     DatabaseReference mdatabase;
     ProgressDialog dialog2;
     String Uid = "" , id_craftsman = "";
-    WorkCraftsmanAdapter nAdapter;
+    CartAdapter nAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +55,7 @@ public class cart_customer extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setItemViewCacheSize(50);
         recyclerView.setDrawingCacheEnabled(true);
-          nAdapter = new WorkCraftsmanAdapter(cart_customer.this, list);
+          nAdapter = new CartAdapter(cart_customer.this, list);
         recyclerView.setAdapter(nAdapter);
         mdatabase = FirebaseDatabase.getInstance().getReference().child("Cart") ;
         mdatabase.addValueEventListener(new ValueEventListener() {
@@ -66,10 +67,10 @@ public class cart_customer extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Work work = snapshot.getValue(Work.class);
 
-                    if(work.getUID().equals(Uid)) {
+                 //   if(work.getUID().equals(Uid)) {
                         list.add(work);
                         nAdapter.notifyDataSetChanged();
-                    }
+                  //  }
                     dialog2.dismiss();
                 }
 

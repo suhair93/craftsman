@@ -41,7 +41,10 @@ public class works_craftsman_in_customer extends AppCompatActivity {
                 finish();
             }
         });
-
+        Bundle b = getIntent().getExtras();
+        if(b != null){
+            id_craftsman = b.getString("id");
+        }
         SharedPreferences prefs = getSharedPreferences("data", 0);
         Uid = prefs.getString("Uid","");
 
@@ -68,7 +71,7 @@ public class works_craftsman_in_customer extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Work work = snapshot.getValue(Work.class);
 
-                    if(work.getId().equals(id_craftsman)) {
+                    if(work.getUID().equals(id_craftsman)) {
                         list.add(work);
                         nAdapter.notifyDataSetChanged();
                     }
