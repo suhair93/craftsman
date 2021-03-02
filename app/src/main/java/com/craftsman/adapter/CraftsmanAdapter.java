@@ -2,12 +2,15 @@ package com.craftsman.adapter;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.craftsman.R;
+import com.craftsman.customer.works_craftsman_in_customer;
 import com.craftsman.model.User;
 import com.squareup.picasso.Picasso;
 import java.util.List;
@@ -43,28 +46,21 @@ public class CraftsmanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
 
-//        holder1.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent i = new Intent(context, DetailsActivity.class);
-//                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                Bundle b = new Bundle();
-//                b.putString("id", orderModel.getUID()+"");
-//                b.putString("title", orderModel.getTitle_User() + "");
-//                b.putString("image", orderModel.getUpload_image() + "");
-//                b.putString("des", orderModel.getDescription_User() + "");
-//                b.putString("price", orderModel.getPrice() + "");
-//                b.putString("Discount", orderModel.getDiscount() + "");
-//                b.putString("Category", orderModel.getCategory() + "");
-//                b.putString("UID", orderModel.getUID() + "");
-//
-//                i.putExtras(b);
-//                context.startActivity(i);
-//
-//            }
-//
-//        });
+        holder1.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(context, works_craftsman_in_customer.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Bundle b = new Bundle();
+                b.putString("id", item.getId());
+
+                i.putExtras(b);
+                context.startActivity(i);
+
+            }
+
+        });
 
 
     }

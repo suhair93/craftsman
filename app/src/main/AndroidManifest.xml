@@ -33,6 +33,10 @@
         <activity android:name=".craftsman.requests_in_craftsman" />
         <activity android:name=".craftsman.profile_craftsman" />
         <activity android:name=".craftsman.add_work_craftsman" />
+        <activity android:name=".customer.CraftsmanList" />
+        <activity android:name=".customer.cart_customer" />
+        <activity android:name=".customer.works_craftsman_in_customer" />
+
     </application>
 
 </manifest>

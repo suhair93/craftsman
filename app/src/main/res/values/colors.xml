@@ -7,8 +7,9 @@
     <color name="gray_dark">#565A5A</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#E6E6E6</color>
 
-    <color name="colorPrimary">#F06644CC</color>
+    <color name="colorPrimary">#F0B298FF</color>
     <color name="colorPrimaryDark">#BF8068C6</color>
     <color name="colorAccent">#B9E91E63</color>
 </resources>

@@ -39,7 +39,7 @@ public class profile_craftsman extends AppCompatActivity {
     EditText name, descrption, Phone;
     TextView email;
     CircleImageView img;
-    DatabaseReference mdatabase;
+    DatabaseReference mdatabase,Cdatabase;
     StorageReference userImagesRef;
     String link;
     ProgressDialog dialog;
@@ -72,6 +72,8 @@ public class profile_craftsman extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("data", 0);
         Uid = prefs.getString("Uid","");
         mdatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Uid);
+
+        Cdatabase = FirebaseDatabase.getInstance().getReference().child("Craftsman").child(Uid);
         get_data();
 
         findViewById(R.id.img).setOnClickListener(new View.OnClickListener() {
@@ -133,6 +135,7 @@ public class profile_craftsman extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 dialog.dismiss();
+                Cdatabase.setValue(user);
                 Toast.makeText(profile_craftsman.this, "Edit Successfully", Toast.LENGTH_SHORT).show();
                 finish();
 
