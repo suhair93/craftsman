@@ -29,17 +29,17 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:text="@string/request"
+                    android:text="contact"
                     android:gravity="center"
                     android:textStyle="italic|bold"
                     android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_16sdp" />
 
                 <Button
                     android:id="@+id/back"
-                    android:layout_width="12dp"
-                    android:layout_height="18dp"
+                    android:layout_width="19dp"
+                    android:layout_height="28dp"
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/_9sdp"
                     android:background="@drawable/back" />

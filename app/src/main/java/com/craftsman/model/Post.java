@@ -4,6 +4,7 @@ public class Post {
 
     String id;
 
+    String request;
     String UID;
     String title ;
 
@@ -12,16 +13,23 @@ public class Post {
     public Post() {
     }
 
-    public Post(String id , String UID , String title  ) {
+    public Post(String id , String UID ,String request , String title  ) {
         this.id = id;
 
+        this.request = request;
         this.UID = UID;
         this.title = title;
 
 
     }
 
+    public String getRequest() {
+        return request;
+    }
 
+    public void setRequest(String request) {
+        this.request = request;
+    }
 
     public String getId() {
         return id;

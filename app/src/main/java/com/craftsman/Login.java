@@ -176,6 +176,7 @@ public class Login extends AppCompatActivity {
                                     editor.putString("Category", user.getCategory());
                                     editor.putString("phone", user.getPhone());
                                     editor.putString("photo", user.getImage());
+                                    editor.putString("City", user.getCity());
                                     editor.putString("password", password);
                                     editor.apply();
 
@@ -185,11 +186,13 @@ public class Login extends AppCompatActivity {
                                         Intent intent = new Intent(Login.this, MainActivity.class);
                                         intent.putExtra(user.getEmail(), email);
                                         intent.putExtra("Uid", users.getUid());
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         startActivity(intent);
                                     } else {
                                         Intent intent = new Intent(Login.this, home_craftsman.class);
                                         intent.putExtra(user.getEmail(), email);
                                         intent.putExtra("Uid", users.getUid());
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         startActivity(intent);
                                     }
 

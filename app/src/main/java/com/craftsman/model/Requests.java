@@ -7,29 +7,23 @@ public class Requests {
     String UID;
     String title ;
     String description ;
-    String category ;
+
 
 
     public Requests() {
     }
 
-    public Requests(String id , String UID , String title, String description ,String category ) {
+    public Requests(String id , String UID , String title, String description  ) {
         this.id = id;
 
         this.UID = UID;
         this.title = title;
         this.description = description;
-        this.category = category;
+
 
     }
 
-    public String getCategory() {
-        return category;
-    }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
     public String getId() {
         return id;

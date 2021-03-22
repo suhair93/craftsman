@@ -61,7 +61,17 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             @Override
             public void onClick(View view) {
 
-
+                holder1.dialog1.show();
+                FirebaseDatabase.getInstance().getReference().
+                        child("Cart").child(item.getId()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        holder1.dialog1.dismiss();
+                        Toast.makeText(context, "Delete Successfully", Toast.LENGTH_SHORT).show();
+                        notifyDataSetChanged();
+                        notifyItemRemoved(position);
+                    }
+                });
 
             }
         });

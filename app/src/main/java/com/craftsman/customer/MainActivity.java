@@ -39,7 +39,7 @@ public class MainActivity   extends AppCompatActivity implements NavigationView.
     ArrayList list = new ArrayList<User>();
     DatabaseReference mdatabase;
     ProgressDialog dialog2;
-    String Uid = "";
+    String Uid = "" , City = "";
     CraftsmanAdapter nAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class MainActivity   extends AppCompatActivity implements NavigationView.
 
         SharedPreferences prefs = getSharedPreferences("data", 0);
         Uid = prefs.getString("Uid","");
-
+        City= prefs.getString("City", "");
         dialog2 = new ProgressDialog(MainActivity.this);
         dialog2.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog2.setMessage("Please Wait ... ");
@@ -109,10 +109,12 @@ public class MainActivity   extends AppCompatActivity implements NavigationView.
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     User user = snapshot.getValue(User.class);
 
+                    if(user.getCity().equals(City)) {
+
 
                         list.add(user);
                         nAdapter.notifyDataSetChanged();
-
+                    }
                     dialog2.dismiss();
                 }
 
@@ -131,19 +133,22 @@ public class MainActivity   extends AppCompatActivity implements NavigationView.
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-//            case R.id.home:
-//           //    HomeActivityNew.this.finish();
-//                break;
-//            case R.id.change_Profile:
-//                //  Intent intent = new Intent(CustomerMainActivity.this, Change_data_customer.class);
-//                // startActivity(intent);
-//                break;
-//
-//
-//            case R.id.search:
-//                //  Intent intentresturant = new Intent(CustomerMainActivity.this, ResturantActivity.class);
-//                //   startActivity(intentresturant);
-//                break;
+            case R.id.home:
+
+                break;
+            case R.id.change_Profile:
+               Intent intent = new Intent(MainActivity.this, profile_customer.class);
+                startActivity(intent);
+                break;
+            case R.id.add:
+                Intent add  = new Intent(MainActivity.this, add_request_customer.class);
+                startActivity(add);
+                break;
+
+            case R.id.MyRequest:
+               Intent in  = new Intent(MainActivity.this, requests_in_customer.class);
+                 startActivity(in);
+                break;
             case R.id.cart:
                   Intent i = new Intent(MainActivity.this, cart_customer.class);
                    startActivity(i);

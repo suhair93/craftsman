@@ -35,7 +35,12 @@
         <activity android:name=".craftsman.add_work_craftsman" />
         <activity android:name=".customer.CraftsmanList" />
         <activity android:name=".customer.cart_customer" />
+        <activity android:name=".customer.profile_customer" />
+        <activity android:name=".customer.add_request_customer" />
+        <activity android:name=".customer.requests_in_customer"/>
+        <activity android:name=".craftsman.Details_Request"/>
         <activity android:name=".customer.works_craftsman_in_customer" />
+        <activity android:name=".MessageActivity" />
 
     </application>
 

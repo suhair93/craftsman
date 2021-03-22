@@ -14,11 +14,12 @@ public class User {
     String category;
     int UserType;
     String  image;
+    String  city;
     String  description;
     public User() {
     }
 
-    public User(String id, String fullname, String email, String password, String phone, int userType ,String category) {
+    public User(String id, String fullname, String email, String password, String phone, int userType ,String category,String city) {
         this.id = id;
         this.fullname = fullname;
         Email = email;
@@ -26,8 +27,18 @@ public class User {
         this.phone = phone;
         UserType = userType;
         this.category = category;
+        this.city = city;
     }
-
+    public User(String id, String fullname, String email, String password, String phone, int userType ,String city) {
+        this.id = id;
+        this.fullname = fullname;
+        Email = email;
+        this.password = password;
+        this.phone = phone;
+        UserType = userType;
+        this.category = category;
+        this.city = city;
+    }
     public String getDescription() {
         return description;
     }
@@ -39,6 +50,14 @@ public class User {
     public User(String fullname, String category) {
         this.fullname = fullname;
         this.category = category;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getId() {

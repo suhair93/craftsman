@@ -2,6 +2,7 @@ package com.craftsman.adapter;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.craftsman.MessageActivity;
 import com.craftsman.R;
 import com.craftsman.model.Post;
 import com.craftsman.model.User;
@@ -22,10 +24,12 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Post> list;
     Context context;
+    String  iduser;
 
-    public PostAdapter(Context context, List<Post> List1) {
+    public PostAdapter(Context context, List<Post> List1 , String iduser) {
         this.context = context;
         this.list = List1;
+        this.iduser = iduser;
     }
 
     @Override
@@ -41,32 +45,14 @@ public class PostAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         holder1.title.setText(item.getTitle());
 
-
-
-//        holder1.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent i = new Intent(context, DetailsActivity.class);
-//                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                Bundle b = new Bundle();
-//                b.putString("id", orderModel.getUID()+"");
-//                b.putString("title", orderModel.getTitle_User() + "");
-//                b.putString("image", orderModel.getUpload_image() + "");
-//                b.putString("des", orderModel.getDescription_User() + "");
-//                b.putString("price", orderModel.getPrice() + "");
-//                b.putString("Discount", orderModel.getDiscount() + "");
-//                b.putString("Category", orderModel.getCategory() + "");
-//                b.putString("UID", orderModel.getUID() + "");
-//
-//                i.putExtras(b);
-//                context.startActivity(i);
-//
-//            }
-//
-//        });
-
-
+        holder1.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, MessageActivity.class);
+                intent.putExtra("userid", iduser);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

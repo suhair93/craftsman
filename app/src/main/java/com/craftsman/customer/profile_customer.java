@@ -1,7 +1,6 @@
-package com.craftsman.craftsman;
+package com.craftsman.customer;
 
 import android.app.ProgressDialog;
-import android.app.UiAutomation;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -38,19 +37,19 @@ import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class profile_craftsman extends AppCompatActivity {
+public class profile_customer extends AppCompatActivity {
+    Spinner cities;
     EditText name , Phone;
     TextView email;
     CircleImageView img;
-    DatabaseReference mdatabase,Cdatabase;
+    DatabaseReference mdatabase;
     StorageReference userImagesRef;
     String link;
     ProgressDialog dialog;
     String Uid;
-    String password = "" , type_craftsman = "";
+    String password = "" ;
     String city = "";
     ArrayList<String> listcities = new ArrayList<String>();
-    Spinner cities;
     private static final int PICK_IMG_REQUEST = 7588;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,16 +62,6 @@ public class profile_craftsman extends AppCompatActivity {
 
         img = findViewById(R.id.img);
 
-        cities = findViewById(R.id.cities);
-
-        listcities.add("Riyadh");
-        listcities.add("Jedah");
-        listcities.add("Dammam");
-        listcities.add("Tabuk");
-
-
-        ArrayAdapter<String> adaptercities = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listcities);
-        cities.setAdapter(adaptercities);
 
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,11 +74,22 @@ public class profile_craftsman extends AppCompatActivity {
         dialog.setMessage(" please wait...");
         dialog.setIndeterminate(true);
 
+        cities = findViewById(R.id.cities);
+
+        listcities.add("Riyadh");
+        listcities.add("Jedah");
+        listcities.add("Dammam");
+        listcities.add("Tabuk");
+
+
+        ArrayAdapter<String> adaptercities = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listcities);
+        cities.setAdapter(adaptercities);
+
         SharedPreferences prefs = getSharedPreferences("data", 0);
         Uid = prefs.getString("Uid","");
         mdatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(Uid);
 
-        Cdatabase = FirebaseDatabase.getInstance().getReference().child("Craftsman").child(Uid);
+
         get_data();
 
         findViewById(R.id.img).setOnClickListener(new View.OnClickListener() {
@@ -113,13 +113,15 @@ public class profile_craftsman extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 final User user = dataSnapshot.getValue(User.class);
-                if(user.getUserType() == 2) {
+                if(user.getUserType() == 1) {
                     name.setText(user.getFullname());
                     email.setText(user.getEmail());
                     Phone.setText(user.getPhone());
 
                     password =  user.getPassword();
-                    type_craftsman = user.getCategory();
+
+                    city = user.getCity();
+
                     try {
                         link = user.getImage();
                         Picasso.get().load(link).placeholder(R.drawable.adduser).into(img);
@@ -138,10 +140,11 @@ public class profile_craftsman extends AppCompatActivity {
     }
     public void edit(){
        // String key = mdatabase.push().getKey();
+
         city = listcities.get(cities.getSelectedItemPosition());
         User user = new User(Uid, name.getText().toString(), email.getText().toString(),
                 password, Phone.getText().toString(),
-                2,  type_craftsman);
+                1 , city);
 
 
 
@@ -151,15 +154,15 @@ public class profile_craftsman extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 dialog.dismiss();
-                Cdatabase.setValue(user);
-                Toast.makeText(profile_craftsman.this, "Edit Successfully", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(profile_customer.this, "Edit Successfully", Toast.LENGTH_SHORT).show();
                 finish();
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(profile_craftsman.this, "Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(profile_customer.this, "Error " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
 
             }
@@ -181,14 +184,14 @@ public class profile_craftsman extends AppCompatActivity {
 
 
         } else {
-            Toast.makeText(profile_craftsman.this, "no image selected :/", Toast.LENGTH_SHORT).show();
+            Toast.makeText(profile_customer.this, "no image selected :/", Toast.LENGTH_SHORT).show();
         }
     }
 
 
 
     private void upload(Uri uri) {
-        final ProgressDialog progressDialog = new ProgressDialog(profile_craftsman.this);
+        final ProgressDialog progressDialog = new ProgressDialog(profile_customer.this);
         progressDialog.show();
         final String imageName = UUID.randomUUID().toString() + ".jpg";
         userImagesRef = FirebaseStorage.getInstance().getReference().child("Users").child("image");
@@ -221,10 +224,10 @@ public class profile_craftsman extends AppCompatActivity {
                             Picasso.get().load(link).into(img);
                             img.setVisibility(View.VISIBLE);
 
-                            Toast.makeText(profile_craftsman.this, "Uplaod Succeed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(profile_customer.this, "Uplaod Succeed", Toast.LENGTH_SHORT).show();
                         } else {
                             Log.d("3llomi", "upload Failed " + task.getException().getLocalizedMessage());
-                            Toast.makeText(profile_craftsman.this, "Uplaod Failed :( " + task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(profile_customer.this, "Uplaod Failed :( " + task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 });

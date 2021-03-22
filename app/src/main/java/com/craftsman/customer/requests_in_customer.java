@@ -1,4 +1,4 @@
-package com.craftsman.craftsman;
+package com.craftsman.customer;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.craftsman.R;
 import com.craftsman.adapter.Request_in_CraftsmanAdapter;
-import com.craftsman.adapter.WorkCraftsmanAdapter;
 import com.craftsman.model.Requests;
 import com.craftsman.model.Work;
 import com.google.firebase.database.DataSnapshot;
@@ -24,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class requests_in_craftsman extends AppCompatActivity {
+public class requests_in_customer extends AppCompatActivity {
     ArrayList list = new ArrayList<Requests>();
     DatabaseReference mdatabase;
     ProgressDialog dialog2;
@@ -32,7 +31,7 @@ public class requests_in_craftsman extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_requests_in_craftsman);
+        setContentView(R.layout.activity_requests_in_castomer);
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +43,7 @@ public class requests_in_craftsman extends AppCompatActivity {
         Uid = prefs.getString("Uid","");
 
         mdatabase = FirebaseDatabase.getInstance().getReference().child("requests");
-        dialog2 = new ProgressDialog(requests_in_craftsman.this);
+        dialog2 = new ProgressDialog(requests_in_customer.this);
         dialog2.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog2.setMessage("Please Wait ... ");
         dialog2.setIndeterminate(true);
@@ -58,7 +57,7 @@ public class requests_in_craftsman extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setItemViewCacheSize(50);
         recyclerView.setDrawingCacheEnabled(true);
-        Request_in_CraftsmanAdapter nAdapter = new Request_in_CraftsmanAdapter(requests_in_craftsman.this, list);
+        Request_in_CraftsmanAdapter nAdapter = new Request_in_CraftsmanAdapter(requests_in_customer.this, list);
         recyclerView.setAdapter(nAdapter);
         mdatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -68,16 +67,16 @@ public class requests_in_craftsman extends AppCompatActivity {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Requests requests = snapshot.getValue(Requests.class);
-
+                    if((requests.getUID().equals(Uid)) ) {
                         list.add(requests);
                         nAdapter.notifyDataSetChanged();
-
+                    }
 
                 }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(requests_in_craftsman.this, "no data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requests_in_customer.this, "no data", Toast.LENGTH_SHORT).show();
             }
         });
 

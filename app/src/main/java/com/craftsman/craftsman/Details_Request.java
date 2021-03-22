@@ -36,17 +36,24 @@ public class Details_Request extends AppCompatActivity {
     ArrayList list = new ArrayList<Post>();
     DatabaseReference mdatabase;
     ProgressDialog dialog2;
-    String Uid = "" , id = "";
+    PostAdapter nAdapter;
+    String Uid = "" , id = "" ,idUser = ""   ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_details);
         SharedPreferences prefs = getSharedPreferences("data", 0);
         Uid = prefs.getString("Uid","");
-
+        title = findViewById(R.id.title);
+        descrption = findViewById(R.id.description);
         Bundle b = getIntent().getExtras();
         if(b != null){
             id = b.getString("id","");
+            idUser =  b.getString("idUser","");
+            title.setText( b.getString("title",""));
+            descrption.setText( b.getString("descrption",""));
+
+
         }
 
 
@@ -63,7 +70,7 @@ public class Details_Request extends AppCompatActivity {
             }
         });
 
-        mdatabase = FirebaseDatabase.getInstance().getReference().child("OffersCustomerPost");
+        mdatabase = FirebaseDatabase.getInstance().getReference().child("Post");
         add_Offer =  findViewById(R.id.addOffer);
 
         findViewById(R.id.add).setOnClickListener(new View.OnClickListener() {
@@ -71,13 +78,13 @@ public class Details_Request extends AppCompatActivity {
             public void onClick(View v) {
                 String key = mdatabase.push().getKey();
 
-                final Post post = new Post(key ,Uid, title.getText().toString()  );
+                final Post post = new Post(key ,Uid, id, title.getText().toString()  );
                 mdatabase.child(key).setValue(post).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
 
                         Toast.makeText(Details_Request.this, "Added Successfully", Toast.LENGTH_SHORT).show();
-                        finish();
+                        nAdapter.notifyDataSetChanged();
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -98,7 +105,7 @@ public class Details_Request extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setItemViewCacheSize(50);
         recyclerView.setDrawingCacheEnabled(true);
-        PostAdapter nAdapter = new PostAdapter(Details_Request.this, list);
+        nAdapter = new PostAdapter(Details_Request.this, list, idUser) ;
         recyclerView.setAdapter(nAdapter);
         mdatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -108,7 +115,7 @@ public class Details_Request extends AppCompatActivity {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Post post = snapshot.getValue(Post.class);
-                    if((post.getId().equals(id)) ) {
+                    if((post.getRequest().equals(id)) ) {
                         list.add(post);
                         nAdapter.notifyDataSetChanged();
                     }

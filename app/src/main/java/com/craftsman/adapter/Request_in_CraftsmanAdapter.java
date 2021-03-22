@@ -53,7 +53,7 @@ public class Request_in_CraftsmanAdapter extends RecyclerView.Adapter<RecyclerVi
 
         holder1.title.setText(item.getTitle());
         holder1.descrption.setText(item.getDescription());
-        holder1.category.setText(item.getCategory());
+
 
 
         holder1.itemView.setOnClickListener(new View.OnClickListener() {
@@ -61,12 +61,15 @@ public class Request_in_CraftsmanAdapter extends RecyclerView.Adapter<RecyclerVi
             public void onClick(View view) {
 
                 Intent i = new Intent(context, Details_Request.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Bundle b = new Bundle();
-                b.putString("id", item.getUID()+"");
 
 
-                i.putExtras(b);
+                i.putExtra("idUser", item.getUID()+"");
+                i.putExtra("title", item.getTitle());
+                i.putExtra("descrption", item.getDescription());
+
+                i.putExtra("id", item.getId());
+
+
                 context.startActivity(i);
 
             }

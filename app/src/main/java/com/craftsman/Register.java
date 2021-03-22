@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class Register extends AppCompatActivity {
-    Spinner  TypeOfCraftsman ;
+    Spinner  TypeOfCraftsman ,cities;
     EditText name, email, password, Phone;
     RadioButton radio_Customer, radio_craftsman;
     ProgressDialog mDialog;
@@ -35,6 +35,7 @@ public class Register extends AppCompatActivity {
     int user_type = 0;
     String type_Craftsman = "" ;
     ArrayList<String> ListType = new ArrayList<String>();
+    ArrayList<String> listcities = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +55,24 @@ public class Register extends AppCompatActivity {
             }
         });
 
+
+        cities = findViewById(R.id.cities);
+
+        listcities.add("Riyadh");
+        listcities.add("Jedah");
+        listcities.add("Dammam");
+        listcities.add("Tabuk");
+
+
+        ArrayAdapter<String> adaptercities = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listcities);
+        cities.setAdapter(adaptercities);
+
         TypeOfCraftsman = findViewById(R.id.category);
 
        ListType.add("Draw");
        ListType.add("Carpentry");
-        ArrayAdapter<String> adaptercities = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, ListType);
-        TypeOfCraftsman.setAdapter(adaptercities);
+        ArrayAdapter<String> adaptertype = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, ListType);
+        TypeOfCraftsman.setAdapter(adaptertype);
 
 
         radio_Customer = (RadioButton) findViewById(R.id.radio_C);
@@ -113,6 +126,7 @@ public class Register extends AppCompatActivity {
                     User user = new User(task.getResult().getUser().getUid(), name.getText().toString(), Email,
                             password.getText().toString(), Phone.getText().toString(),
                             user_type,  ListType.get(TypeOfCraftsman.getSelectedItemPosition()));
+                    user.setCity(listcities.get(cities.getSelectedItemPosition()));
 
                     mdatabase.child(task.getResult().getUser().getUid()).setValue(user);
                     if(user_type == 2){

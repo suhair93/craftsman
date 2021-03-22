@@ -145,6 +145,15 @@
                             android:layout_marginTop="@dimen/_5sdp"
                             android:id="@+id/phone_number"
                             android:gravity="start|center_vertical"/>
+
+                        <Spinner
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:hint="cities"
+                            android:textColorHint="#C9C9C9"
+                            android:textSize="@dimen/_10sdp"
+                            android:id="@+id/cities"/>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:weightSum="2"
