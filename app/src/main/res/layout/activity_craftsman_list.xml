@@ -23,18 +23,17 @@
                 android:orientation="horizontal">
 
 
-
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="366dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:text="Craftsmen List"
-                    android:gravity="center"
-                    android:textStyle="italic|bold"
                     android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Craftsmen List"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_16sdp" />
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="italic|bold" />
 
                 <Button
                     android:id="@+id/back"

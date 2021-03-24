@@ -184,8 +184,8 @@ public class MessageActivity extends AppCompatActivity {
         // add user to chat fragment
         final DatabaseReference chatRef = FirebaseDatabase.getInstance("https://craftsman-c62e9-default-rtdb.firebaseio.com/").getReference("Chatlist")
 
-                .child(userid)
-        .child(fuser.getUid());
+        .child(fuser.getUid())
+         .child(userid);
 
         chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -203,7 +203,8 @@ public class MessageActivity extends AppCompatActivity {
         
         final DatabaseReference chatRefReceiver = FirebaseDatabase.getInstance("https://craftsman-c62e9-default-rtdb.firebaseio.com/").getReference("Chatlist")
 
-                .child(fuser.getUid()).child(userid);
+              .child(userid)
+                .child(fuser.getUid());
         chatRefReceiver.child("id").setValue(fuser.getUid());
 
         final String msg = message;

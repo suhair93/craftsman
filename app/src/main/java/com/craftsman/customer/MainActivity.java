@@ -149,6 +149,12 @@ public class MainActivity   extends AppCompatActivity implements NavigationView.
                Intent in  = new Intent(MainActivity.this, requests_in_customer.class);
                  startActivity(in);
                 break;
+
+            case R.id.chat:
+                Intent ichat = new Intent(MainActivity.this, ChatsActivity.class);
+                startActivity(ichat);
+                break;
+
             case R.id.cart:
                   Intent i = new Intent(MainActivity.this, cart_customer.class);
                    startActivity(i);

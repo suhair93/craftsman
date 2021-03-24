@@ -15,6 +15,9 @@
         android:id="@+id/cart"
         android:title="@string/cart" />
     <item
+        android:id="@+id/chat"
+        android:title="Direct message" />
+    <item
         android:id="@+id/logout"
         android:title="@string/logout" />
 

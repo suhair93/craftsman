@@ -41,6 +41,7 @@
         <activity android:name=".craftsman.Details_Request"/>
         <activity android:name=".customer.works_craftsman_in_customer" />
         <activity android:name=".MessageActivity" />
+        <activity android:name=".customer.ChatsActivity" />
 
     </application>
 
