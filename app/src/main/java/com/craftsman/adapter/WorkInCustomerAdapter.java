@@ -66,11 +66,11 @@ public class WorkInCustomerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 holder1.dialog1.show();
 
                 mdatabase = FirebaseDatabase.getInstance().getReference().child("Cart");
-                String key = mdatabase.push().getKey();
+             //   String key = mdatabase.push().getKey();
 
 
 
-                mdatabase.child(key).setValue(item).addOnCompleteListener(new OnCompleteListener<Void>() {
+                mdatabase.child(item.getId()).setValue(item).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         holder1.dialog1.dismiss();

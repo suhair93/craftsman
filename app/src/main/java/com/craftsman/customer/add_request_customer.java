@@ -7,8 +7,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +30,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class add_request_customer extends AppCompatActivity {
@@ -35,7 +38,8 @@ public class add_request_customer extends AppCompatActivity {
     ProgressDialog dialog1;
     DatabaseReference mdatabase;
     String Uid;
-
+    ArrayList<String> ListType = new ArrayList<String>();
+    Spinner TypeOfCraftsman;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +65,12 @@ public class add_request_customer extends AppCompatActivity {
         Uid = prefs.getString("Uid","");
 
 
+        TypeOfCraftsman = findViewById(R.id.type);
 
+        ListType.add("Draw");
+        ListType.add("Carpentry");
+        ArrayAdapter<String> adaptertype = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, ListType);
+        TypeOfCraftsman.setAdapter(adaptertype);
 
         findViewById(R.id.Add).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +80,7 @@ public class add_request_customer extends AppCompatActivity {
                     mdatabase = FirebaseDatabase.getInstance().getReference().child("requests");
                     String key = mdatabase.push().getKey();
 
-                    final Requests request = new Requests(key ,Uid, title.getText().toString(), description.getText().toString()
+                    final Requests request = new Requests(key ,Uid, title.getText().toString(), description.getText().toString(),  ListType.get(TypeOfCraftsman.getSelectedItemPosition())
                             );
 
                     mdatabase.child(key).setValue(request).addOnCompleteListener(new OnCompleteListener<Void>() {

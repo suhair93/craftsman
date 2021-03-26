@@ -83,7 +83,7 @@ public class cart_customer extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 list.clear();
 
-                   dialog2.show();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Work work = snapshot.getValue(Work.class);
 
@@ -91,7 +91,7 @@ public class cart_customer extends AppCompatActivity {
                         list.add(work);
                         nAdapter.notifyDataSetChanged();
                   //  }
-                    dialog2.dismiss();
+
                 }
 
             }

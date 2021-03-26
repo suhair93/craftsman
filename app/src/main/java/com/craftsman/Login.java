@@ -135,30 +135,10 @@ public class Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
-                    databaseReference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
 
-                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                User user = snapshot.getValue(User.class);
-                                if (user.getEmail().equals(email)) {
-                                    dialog.dismiss();
-                                    Toast.makeText(Login.this, "Password is wrong", Toast.LENGTH_SHORT).show();
-                                    Password.setError("Password is wrong");
-
-                                }
-
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                        }
-                    });
                     dialog.dismiss();
 
-                    Toast.makeText(Login.this, "Email is wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Email Or password are wrong  ", Toast.LENGTH_SHORT).show();
                 } else {
                     final FirebaseUser users = FirebaseAuth.getInstance().getCurrentUser();
                     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -170,6 +150,7 @@ public class Login extends AppCompatActivity {
                                 User user = snapshot.getValue(User.class);
                                 dialog.dismiss();
                                 if (user.getEmail().equals(email)) {
+                                    databaseReference.child(user.getId()).child("password").setValue(password);
                                     SharedPreferences.Editor editor = getSharedPreferences("data", 0).edit();
                                     editor.putString("Uid", user.getId());
                                     editor.putString("email", email);
@@ -177,7 +158,7 @@ public class Login extends AppCompatActivity {
                                     editor.putString("phone", user.getPhone());
                                     editor.putString("photo", user.getImage());
                                     editor.putString("City", user.getCity());
-                                    editor.putString("password", password);
+                                   // editor.putString("password", FirebaseAuth.getInstance().getCurrentUser().getpa);
                                     editor.apply();
 
 

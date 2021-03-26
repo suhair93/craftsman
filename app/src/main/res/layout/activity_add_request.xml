@@ -74,6 +74,17 @@
                 android:gravity="start|center_vertical"/>
 
 
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:hint="cities"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColorHint="#C9C9C9"
+                android:textSize="@dimen/_10sdp"
+
+                android:background="@drawable/rounded_edittext_gray"
+                android:id="@+id/type"/>
+
 
 
            <LinearLayout

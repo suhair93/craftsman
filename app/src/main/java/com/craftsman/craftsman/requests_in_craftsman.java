@@ -28,7 +28,7 @@ public class requests_in_craftsman extends AppCompatActivity {
     ArrayList list = new ArrayList<Requests>();
     DatabaseReference mdatabase;
     ProgressDialog dialog2;
-    String Uid = "";
+    String Uid = "" , category = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +42,7 @@ public class requests_in_craftsman extends AppCompatActivity {
 
         SharedPreferences prefs = getSharedPreferences("data", 0);
         Uid = prefs.getString("Uid","");
+        category = prefs.getString("Category","");
 
         mdatabase = FirebaseDatabase.getInstance().getReference().child("requests");
         dialog2 = new ProgressDialog(requests_in_craftsman.this);
@@ -69,9 +70,10 @@ public class requests_in_craftsman extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Requests requests = snapshot.getValue(Requests.class);
 
+                    if(category.equals(requests.getType())) {
                         list.add(requests);
                         nAdapter.notifyDataSetChanged();
-
+                    }
 
                 }
             }
