@@ -172,7 +172,7 @@
             android:id="@+id/add"
             android:gravity="center"
             android:layout_gravity="center"
-            android:background="@drawable/buttonshape_red"
+            android:background="@drawable/rounded_corner1"
          android:layout_margin="@dimen/_5sdp"
             android:textColor="@color/white"
 

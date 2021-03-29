@@ -94,9 +94,10 @@
                             android:id="@+id/view"
                             android:background="@drawable/rounded_corner1"
 
+
                             android:textColor="@color/white"
                             android:layout_gravity="center"
-                            android:visibility="visible"
+                            android:visibility="gone"
                             android:drawableStart="@android:drawable/ic_menu_view"
                             android:textSize="@dimen/_14sdp"
                             android:text="View CV   "/>

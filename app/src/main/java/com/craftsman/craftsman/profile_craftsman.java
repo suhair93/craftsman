@@ -67,6 +67,8 @@ public class profile_craftsman extends AppCompatActivity {
 
         img = findViewById(R.id.img);
 
+        Button cvBtn = findViewById(R.id.view);
+        cvBtn.setVisibility(View.VISIBLE);
         cities = findViewById(R.id.cities);
 
         listcities.add("Riyadh");
