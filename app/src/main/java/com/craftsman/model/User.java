@@ -14,12 +14,13 @@ public class User {
     String category;
     int UserType;
     String  image;
+    String  cv;
     String  city;
     String  description;
     public User() {
     }
 
-    public User(String id, String fullname, String email, String password, String phone, int userType ,String category,String city) {
+    public User(String id, String fullname, String email, String password, String phone, int userType ,String category,String city,  String  cv) {
         this.id = id;
         this.fullname = fullname;
         Email = email;
@@ -28,6 +29,7 @@ public class User {
         UserType = userType;
         this.category = category;
         this.city = city;
+        this.cv = cv;
     }
     public User(String id, String fullname, String email, String password, String phone, int userType ,String city) {
         this.id = id;
@@ -50,6 +52,14 @@ public class User {
     public User(String fullname, String category) {
         this.fullname = fullname;
         this.category = category;
+    }
+
+    public String getCv() {
+        return cv;
+    }
+
+    public void setCv(String cv) {
+        this.cv = cv;
     }
 
     public String getCity() {

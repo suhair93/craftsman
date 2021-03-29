@@ -6,6 +6,9 @@
         android:id="@+id/change_Profile"
         android:title="@string/my_profile"/>
     <item
+        android:id="@+id/search"
+        android:title="Search" />
+    <item
         android:id="@+id/add"
         android:title="add Request" />
     <item

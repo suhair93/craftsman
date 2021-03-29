@@ -1,5 +1,6 @@
 package com.craftsman.craftsman;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.UiAutomation;
 import android.content.Intent;
@@ -8,8 +9,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,7 +52,7 @@ public class profile_craftsman extends AppCompatActivity {
     ProgressDialog dialog;
     String Uid;
     String password = "" , type_craftsman = "";
-    String city = "";
+    String city = "" , cvImg = "";
     ArrayList<String> listcities = new ArrayList<String>();
     Spinner cities;
     private static final int PICK_IMG_REQUEST = 7588;
@@ -81,6 +85,7 @@ public class profile_craftsman extends AppCompatActivity {
             }
         });
 
+
         dialog = new ProgressDialog(this);
         dialog.setMessage(" please wait...");
         dialog.setIndeterminate(true);
@@ -105,11 +110,41 @@ public class profile_craftsman extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(profile_craftsman.this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setCancelable(false);
+                dialog.setContentView(R.layout.image_layout);
+
+
+                ImageView img = dialog.findViewById(R.id.img);
+                try {
+
+                    Picasso.get().load(cvImg).into(img);
+
+
+                } catch (Exception ex) {
+                }
+                Button dialogButton = (Button) dialog.findViewById(R.id.close);
+                dialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+            }
+        });
+
     }
 
     private void get_data() {
 
-        mdatabase.addValueEventListener(new ValueEventListener() {
+        Cdatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 final User user = dataSnapshot.getValue(User.class);
@@ -122,6 +157,7 @@ public class profile_craftsman extends AppCompatActivity {
                     type_craftsman = user.getCategory();
                     try {
                         link = user.getImage();
+                        cvImg = user.getCv();
                         Picasso.get().load(link).placeholder(R.drawable.adduser).into(img);
 
 
@@ -184,8 +220,6 @@ public class profile_craftsman extends AppCompatActivity {
             Toast.makeText(profile_craftsman.this, "no image selected :/", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 
     private void upload(Uri uri) {
         final ProgressDialog progressDialog = new ProgressDialog(profile_craftsman.this);

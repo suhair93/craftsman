@@ -146,6 +146,7 @@
 
 
     <LinearLayout
+        android:id="@+id/add_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
     android:layout_gravity="bottom"
@@ -171,7 +172,7 @@
             android:id="@+id/add"
             android:gravity="center"
             android:layout_gravity="center"
-            android:background="@drawable/buttonshape_blue"
+            android:background="@drawable/buttonshape_red"
          android:layout_margin="@dimen/_5sdp"
             android:textColor="@color/white"
 

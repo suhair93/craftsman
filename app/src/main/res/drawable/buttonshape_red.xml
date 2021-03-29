@@ -10,9 +10,9 @@
         android:angle="90"
         android:centerX="100%"
 
-        android:centerColor="@color/green"
-        android:startColor="@color/green"
-        android:endColor="@color/green"
+        android:centerColor="@color/red"
+        android:startColor="@color/red"
+        android:endColor="@color/red"
         />
     <padding
         android:left="0dp"

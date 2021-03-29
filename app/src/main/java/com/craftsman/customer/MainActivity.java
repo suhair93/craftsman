@@ -48,7 +48,7 @@ public class MainActivity   extends AppCompatActivity implements NavigationView.
 
         SharedPreferences prefs = getSharedPreferences("data", 0);
         Uid = prefs.getString("Uid","");
-        City= prefs.getString("City", "");
+        City = prefs.getString("City", "");
         dialog2 = new ProgressDialog(MainActivity.this);
         dialog2.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog2.setMessage("Please Wait ... ");
@@ -140,6 +140,11 @@ public class MainActivity   extends AppCompatActivity implements NavigationView.
                Intent intent = new Intent(MainActivity.this, profile_customer.class);
                 startActivity(intent);
                 break;
+            case R.id.search:
+                Intent searchI  = new Intent(MainActivity.this, SearchCraftsman.class);
+                startActivity(searchI);
+                break;
+
             case R.id.add:
                 Intent add  = new Intent(MainActivity.this, add_request_customer.class);
                 startActivity(add);

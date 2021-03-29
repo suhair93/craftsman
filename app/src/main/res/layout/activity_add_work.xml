@@ -138,7 +138,7 @@
                 android:layout_width="@dimen/_150sdp"
                 android:layout_height="wrap_content"
                 android:id="@+id/upload_image"
-                android:background="@drawable/buttonshape_green"
+                android:background="@drawable/buttonshape"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:textColor="@color/white"
 
@@ -151,7 +151,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/Add"
-                android:background="@drawable/buttonshape_blue"
+                android:background="@drawable/buttonshape"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:textColor="@color/white"
                 android:layout_marginBottom="@dimen/_10sdp"

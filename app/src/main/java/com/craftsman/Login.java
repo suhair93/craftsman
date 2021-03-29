@@ -158,7 +158,8 @@ public class Login extends AppCompatActivity {
                                     editor.putString("phone", user.getPhone());
                                     editor.putString("photo", user.getImage());
                                     editor.putString("City", user.getCity());
-                                   // editor.putString("password", FirebaseAuth.getInstance().getCurrentUser().getpa);
+                                    editor.putInt("user_type", user.getUserType());
+
                                     editor.apply();
 
 

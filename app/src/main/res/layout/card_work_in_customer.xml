@@ -71,7 +71,7 @@
             android:id="@+id/add"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_30sdp"
-            android:background="@drawable/buttonshape_green"
+            android:background="@drawable/buttonshape"
             android:text="add to cart"
             android:layout_gravity="right"
             android:textColor="@color/white"

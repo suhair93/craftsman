@@ -37,13 +37,15 @@ public class Details_Request extends AppCompatActivity {
     DatabaseReference mdatabase;
     ProgressDialog dialog2;
     PostAdapter nAdapter;
-    String Uid = "" , id = "" ,idUser = ""   ;
+    String Uid = "" , id = "" ,idUser = "" ;
+    int userType = 0   ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_details);
         SharedPreferences prefs = getSharedPreferences("data", 0);
         Uid = prefs.getString("Uid","");
+        userType = prefs.getInt("user_type",0);
         title = findViewById(R.id.title);
         descrption = findViewById(R.id.description);
         Bundle b = getIntent().getExtras();
@@ -69,6 +71,12 @@ public class Details_Request extends AppCompatActivity {
                 finish();
             }
         });
+
+        if(userType == 1){
+            findViewById(R.id.add_view).setVisibility(View.GONE);
+        }else{
+            findViewById(R.id.add_view).setVisibility(View.VISIBLE);
+        }
 
         mdatabase = FirebaseDatabase.getInstance().getReference().child("Post");
         add_Offer =  findViewById(R.id.addOffer);

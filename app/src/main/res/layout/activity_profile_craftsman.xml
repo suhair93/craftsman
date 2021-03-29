@@ -82,6 +82,26 @@
                             card_view:civ_border_width="@dimen/_3sdp"
                             card_view:civ_border_color="@color/colorPrimaryDark"
                             />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/view"
+                            android:background="@drawable/rounded_corner1"
+
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:visibility="visible"
+                            android:drawableStart="@android:drawable/ic_menu_view"
+                            android:textSize="@dimen/_14sdp"
+                            android:text="View CV   "/>
+                    </LinearLayout>
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_35sdp"
@@ -164,7 +184,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edit"
-                            android:background="@drawable/buttonshape_green"
+                            android:background="@drawable/buttonshape"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:textColor="@color/white"
 

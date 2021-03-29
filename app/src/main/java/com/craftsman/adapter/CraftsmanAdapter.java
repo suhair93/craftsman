@@ -7,23 +7,28 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.craftsman.R;
 import com.craftsman.customer.works_craftsman_in_customer;
 import com.craftsman.model.User;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class CraftsmanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class CraftsmanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  implements Filterable {
 
     private List<User> list;
     Context context;
-
+    private List<User> contactListFiltered;
     public CraftsmanAdapter(Context context, List<User> List1) {
         this.context = context;
         this.list = List1;
+        this.contactListFiltered = List1;
     }
 
     @Override
@@ -35,7 +40,7 @@ public class CraftsmanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final Holder holder1 = (Holder) holder;
 
-        final User  item = list.get(position);
+        final User  item = contactListFiltered.get(position);
 
         holder1.title.setText(item.getFullname());
         holder1.category.setText(item.getCategory());
@@ -66,8 +71,41 @@ public class CraftsmanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    contactListFiltered = list;
+                } else {
+                    List<User> filteredList = new ArrayList<>();
+                    for (User row : list) {
+                        if (row.getFullname().toLowerCase().contains(charString.toLowerCase())) {
+                            filteredList.add(row);
+                        }
+                    }
+
+                    contactListFiltered = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = contactListFiltered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                contactListFiltered = (ArrayList<User>) filterResults.values;
+
+                // refresh the list with filtered data
+                notifyDataSetChanged();
+            }
+        };
+    }
+    @Override
     public int getItemCount() {
-        return list.size();
+        return contactListFiltered.size();
     }
 
     @Override

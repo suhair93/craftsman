@@ -188,8 +188,6 @@ public class profile_customer extends AppCompatActivity {
         }
     }
 
-
-
     private void upload(Uri uri) {
         final ProgressDialog progressDialog = new ProgressDialog(profile_customer.this);
         progressDialog.show();

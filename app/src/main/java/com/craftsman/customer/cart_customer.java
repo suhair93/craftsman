@@ -87,10 +87,10 @@ public class cart_customer extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Work work = snapshot.getValue(Work.class);
 
-                 //   if(work.getUID().equals(Uid)) {
+                   if(work.getUID().equals(Uid)) {
                         list.add(work);
                         nAdapter.notifyDataSetChanged();
-                  //  }
+                  }
 
                 }
 

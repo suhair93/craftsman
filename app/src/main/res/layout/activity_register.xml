@@ -181,13 +181,26 @@
                         </LinearLayout>
 
 
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/upload"
+                            android:background="@drawable/rounded_corner1"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:visibility="gone"
+                            android:drawableStart="@android:drawable/ic_menu_upload"
+                            android:textSize="@dimen/_14sdp"
+                            android:text="Upload CV "/>
+
 
 
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/buttonRegister"
-                            android:background="@drawable/buttonshape_green"
+                            android:background="@drawable/buttonshape"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:textColor="@color/white"
 
