@@ -64,7 +64,9 @@ public class WorkInCustomerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             @Override
             public void onClick(View view) {
                 holder1.dialog1.show();
+                SharedPreferences prefs = context.getSharedPreferences("data", 0);
 
+                item.setCustomerID(prefs.getString("Uid",""));
                 mdatabase = FirebaseDatabase.getInstance().getReference().child("Cart");
              //   String key = mdatabase.push().getKey();
 

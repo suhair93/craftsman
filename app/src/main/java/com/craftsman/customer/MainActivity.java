@@ -109,7 +109,7 @@ public class MainActivity   extends AppCompatActivity implements NavigationView.
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     User user = snapshot.getValue(User.class);
 
-                    if(user.getCity().equals(City)) {
+                    if(City.equals(user.getCity())) {
 
 
                         list.add(user);

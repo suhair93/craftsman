@@ -75,7 +75,7 @@ public class CraftsmanList extends AppCompatActivity {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     User u = snapshot.getValue(User.class);
-                    if((u.getCategory().equals(type)) ) {
+                    if((type.equals(u.getCategory())) ) {
                         list.add(u);
                         nAdapter.notifyDataSetChanged();
                     }

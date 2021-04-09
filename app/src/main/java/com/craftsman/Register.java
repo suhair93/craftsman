@@ -137,12 +137,10 @@ public class Register extends AppCompatActivity {
 
 
     private void UserRegister(String Email, String Password) {
-
         mAuth = FirebaseAuth.getInstance();
         mDialog = new ProgressDialog(this);
         mdatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mdatabase1 = FirebaseDatabase.getInstance().getReference().child("Craftsman");
-
         mDialog.setMessage("Creating User please wait...");
         mDialog.setCanceledOnTouchOutside(false);
         mDialog.show();
@@ -150,23 +148,18 @@ public class Register extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    //   sendEmailVerification();
+
                     mDialog.dismiss();
                     User user = new User(task.getResult().getUser().getUid(), name.getText().toString(), Email,
                             password.getText().toString(), Phone.getText().toString(),
                             user_type,  ListType.get(TypeOfCraftsman.getSelectedItemPosition()),listcities.get(cities.getSelectedItemPosition()) ,link  );
-                   // user.setCity(listcities.get(cities.getSelectedItemPosition()));
 
-
-                    mdatabase.child(task.getResult().getUser().getUid()).setValue(user);
+                        mdatabase.child(task.getResult().getUser().getUid()).setValue(user);
                     if(user_type == 2){
-                       // user.setCv(link);
                         mdatabase1.child(task.getResult().getUser().getUid()).setValue(user);
                     }
-
                     mAuth.signOut();
                     Toast.makeText(Register.this, "Successfully", Toast.LENGTH_SHORT).show();
-                    //FirebaseAuth.getInstance().signOut();
                     finish();
                 } else {
                     mDialog.dismiss();
@@ -176,9 +169,6 @@ public class Register extends AppCompatActivity {
         });
     }
     public boolean validtion1() {
-
-
-
         if (TextUtils.isEmpty(name.getText().toString().trim())) {
             Toast.makeText(Register.this, "Enter Name", Toast.LENGTH_SHORT).show();
             name.requestFocus();
@@ -202,8 +192,6 @@ public class Register extends AppCompatActivity {
             Toast.makeText(Register.this, "choice User Type", Toast.LENGTH_SHORT).show();
             return false;
         }
-
-
         return true;
     }
 

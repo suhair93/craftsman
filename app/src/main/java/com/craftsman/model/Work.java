@@ -10,6 +10,7 @@ public class Work {
     String id;
 
     String UID;
+    String CustomerID;
     String title ;
     String description ;
     int price;
@@ -33,6 +34,14 @@ public class Work {
         this.title = title;
         this.description = description;
         this.price = price;
+    }
+
+    public void setCustomerID(String customerID) {
+        CustomerID = customerID;
+    }
+
+    public String getCustomerID() {
+        return CustomerID;
     }
 
     public String getId() {

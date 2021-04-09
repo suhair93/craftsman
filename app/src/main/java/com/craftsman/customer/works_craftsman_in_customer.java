@@ -71,7 +71,7 @@ public class works_craftsman_in_customer extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Work work = snapshot.getValue(Work.class);
 
-                    if(work.getUID().equals(id_craftsman)) {
+                    if(id_craftsman.equals(work.getUID())) {
                         list.add(work);
                         nAdapter.notifyDataSetChanged();
                     }

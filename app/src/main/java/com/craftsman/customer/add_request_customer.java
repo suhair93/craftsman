@@ -75,15 +75,13 @@ public class add_request_customer extends AppCompatActivity {
         findViewById(R.id.Add).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                    dialog1.show();
-                    mdatabase = FirebaseDatabase.getInstance().getReference().child("requests");
-                    String key = mdatabase.push().getKey();
-
-                    final Requests request = new Requests(key ,Uid, title.getText().toString(), description.getText().toString(),  ListType.get(TypeOfCraftsman.getSelectedItemPosition())
+                dialog1.show();
+                mdatabase = FirebaseDatabase.getInstance().getReference().child("requests");
+                String key = mdatabase.push().getKey();
+                final Requests request = new Requests(key ,Uid, title.getText().toString(), description.getText().toString(),  ListType.get(TypeOfCraftsman.getSelectedItemPosition())
                             );
 
-                    mdatabase.child(key).setValue(request).addOnCompleteListener(new OnCompleteListener<Void>() {
+                mdatabase.child(key).setValue(request).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             dialog1.dismiss();

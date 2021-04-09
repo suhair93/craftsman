@@ -67,7 +67,7 @@ public class requests_in_customer extends AppCompatActivity {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Requests requests = snapshot.getValue(Requests.class);
-                    if((requests.getUID().equals(Uid)) ) {
+                    if((Uid.equals(requests.getUID())) ) {
                         list.add(requests);
                         nAdapter.notifyDataSetChanged();
                     }

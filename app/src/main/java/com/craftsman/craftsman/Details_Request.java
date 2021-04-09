@@ -123,7 +123,7 @@ public class Details_Request extends AppCompatActivity {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Post post = snapshot.getValue(Post.class);
-                    if((post.getRequest().equals(id)) ) {
+                    if((id.equals(post.getRequest())) ) {
                         list.add(post);
                         nAdapter.notifyDataSetChanged();
                     }
